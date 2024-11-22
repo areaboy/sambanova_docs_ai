@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <title>Docs AI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="bootstraps/bootstrap.min.css">
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstraps/bootstrap.min.js"></script>
+ <script src="markdown/marked.min.js"></script>
+<script src="pdf/pdf.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+<!-- start column nav-->
+
+
+<div class="text-center">
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navgator">
+        <span class="navbar-header-collapse-color icon-bar"></span>
+        <span class="navbar-header-collapse-color icon-bar"></span>
+        <span class="navbar-header-collapse-color icon-bar"></span> 
+        <span class="navbar-header-collapse-color icon-bar"></span>                       
+      </button>
+     
+<li class="navbar-brand home_click imagelogo_li_remove" ><img title='logo' class="img-rounded imagelogo_data" src="img/logo.png"></li>
+<span class='navbar_title'>Docs AI</span>
+    </div>
+    <div class="collapse navbar-collapse" id="navgator">
+
+
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+
+
+
+
+    </div>
+  </div>
+
+
+
+</nav>
+
+
+    </div><br /><br />
+
+<!-- end column nav-->
+
+
+<br>
+
+<div class="row">
+<div class="col-sm-12">
+<h2><center><b>Docs AI</b></center></h2>
+
+<center><h4>A web and Chrome Extension Plugin App that allows users to easily analyze Text and PDF Legal Contracts Documents Leveraging <b>Sambanova AI</b></h4></center>
+
+
+<h3>How  It Works</h3>
+User either enter the <b>Text</b> Data or uploads the <b>PDF Documents</b> to be Analyze. 
+
+
+<h3>What It Does</h3>
+<ul>
+<li>
+<b>Summarization:</b> This Components allows Users to summarize documents saving you <b>Time</b> & <b>Energy.</b>
+</li>
+
+<li>
+<b>Translation:</b> This Components allows Users to translate documents from one language to another thus making the documents content available in the 
+<b>Users Native Language(UNL)</b> for easy understanding.
+</li>
+
+<li>
+<b>Sentiments Analysis:</b> This Components allows Users to run  documents sentimental analysis to ascertain Documents <b>Negativity, Positivity or Neutralitiy</b>
+ Statements.
+</li>
+<li>
+<b>Keywords Analysis:</b> This Components allows Users to pin-point all the necessary <b>Keywords, Keyphrases</b> found in the documents. This makes Documents 
+Comprehension more easier than ever..
+</li>
+
+
+
+
+
+</ul>
+
+
+<h3>Use Cases</h3>
+<ul>
+<li>
+Analyzing Farmers Contracts Documents
+</li>
+<li>
+Analyzing Business Legal Contracts Documents
+</li>
+
+<li>
+Analyzing  Contracts Documents from Documents Signing Agencies like <b>Hellosign, Docusign</b> etc.
+</li>
+
+</ul>
+
+</div>
+</div>
+<!-- row end  -->
+<br><br>
+
+
+<!-- row starts  -->
+<div class="well row">
+
+
+<div class="col-sm-4">
+
+ <div class="form-group">
+              <label> Sambanova API Key: </label>
+              <input type="password" class="col-sm-12 form-control" id="sambanova_api_key"  placeholder="Sambanova API Key">
+            </div>
+
+<br>
+
+
+
+
+
+
+
+
+ <div class="form-group">
+              <label>Sambanova Model: </label>
+              <select class="col-sm-12 form-control" id="sambanova_model"  placeholder="Sambanova Model">
+<option value=''>--Select Model--</option>
+<option value='Meta-Llama-3.1-8B-Instruct'>Meta-Llama-3.1-8B-Instruct</option>
+<option value='Meta-Llama-3.1-70B-Instruct'>Meta-Llama-3.1-70B-Instruct</option>
+<option value='Meta-Llama-3.1-405B-Instruct'>Meta-Llama-3.1-405B-Instruct</option>
+<option value='Meta-Llama-3.2-1B-Instruct'>Meta-Llama-3.2-1B-Instruct</option>
+<option value='Meta-Llama-3.2-3B-Instruct'>Meta-Llama-3.2-3B-Instruct</option>
+<option value='Llama-3.2-11B-Vision-Instruct'>Llama-3.2-11B-Vision-Instruct</option>
+<option value='Llama-3.2-90B-Vision-Instruct'>Llama-3.2-90B-Vision-Instruct</option>
+</select>
+            </div>
+ 
+</div>
+
+
+<!-- form starts  -->
+<div class="col-sm-7">
+
+
+<div class="form-group">
+<label>Upload PDF Documents <span style='color:red;'></span></label><br>
+
+  <input type="file" class="file_content_docs d_upload"  name="file_content_docs" id="docs_upload" />
+
+<div id="loader_extract"></div>
+<div id="result_extract"></div>
+
+
+<center><h1> OR</h1></center>
+
+<label>Enter Text Below</label><br>
+<textarea cols='5' rows='5' class="col-sm-12 form-control extracted_text" id="content1" placeholder="Enter Text Contents"></textarea>
+<br>
+<input type='text' id="content2" placeholder="Enter Text Contents" class='content input_css_data extracted_text'>
+
+
+
+  
+<div class='row'>
+
+
+<div  id="result_check"></div>
+<div id="loader_ai_1"></div>
+<div id="result_ai_1"></div>
+
+
+
+
+<div  class='tx_css col-sm-3'>
+
+<select id="lang_1" name="lang_1" class='col-sm-12 select_css'>
+    <option value=''>--- Select Languages ----</option>
+    <option value="Arabic"  >Arabic</option>
+    <option value="Bengali">Bengali</option>
+    <option value="Bosnian">Bosnian</option>
+    <option value="Chinese">Chinese</option>
+    <option value="Croatian">Croatian</option>
+    <option value="Czech">Czech</option>
+    <option value="Danish">Danish</option>
+    <option value="Dutch - Nederlands">Dutch - Nederlands</option>
+    <option value="English">English</option>
+    <option value="Estonian">Estonian</option>
+    <option value="Finnish">Finnish</option>
+    <option value="French">French</option>
+    <option value="Galician">Galician</option>
+    <option value="Georgian">Georgian</option>
+    <option value="German">German</option>
+    <option value="Greek">Greek</option>
+    <option value="Guarani">Guarani</option>
+    <option value="Gujarati">Gujarati</option>
+    <option value="Hausa">Hausa</option>
+    <option value="Hawaiian">Hawaiian</option>
+    <option value="Hindi">Hindi</option>
+    <option value="Hebrew">Hebrew</option>
+    <option value="Hungarian">Hungarian</option>
+    <option value="Icelandic">Icelandic</option>
+    <option value="Indonesian">Indonesian</option>
+    <option value="Irish">Irish</option>
+    <option value="Italian">Italian</option>
+    <option value="Japanese">Japanese</option>
+    <option value="Kannada">Kannada</option>
+    <option value="Korean">Korean</option>
+    <option value="Kurdish">Kurdish - Kurdî</option>
+    <option value="Kyrgyz">Kyrgyz</option>
+    <option value="Lao">Lao</option>
+    <option value="latin">Latin</option>
+    <option value="Latvian">Latvian</option>
+    <option value="Lingala">Lingala</option>
+    <option value="Lithuanian">Lithuanian</option>
+    <option value="Macedonian">Macedonian</option>
+    <option value="Malay">Malay</option>
+    <option value="Malayalam">Malayalam</option>
+    <option value="Maltese">Maltese</option>
+    <option value="Marathi">Marathi</option>
+    <option value="Mongolian">Mongolian</option>
+    <option value="Nepali">Nepali</option>
+    <option value="Norwegian">Norwegian</option>
+    <option value="Persian">Persian </option>
+    <option value="Polish">Polish</option>
+    <option value="Portuguese">Portuguese</option>
+    <option value="Punjabi">Punjabi</option>
+    <option value="Romanian">Romanian</option>
+    <option value="Russian">Russian</option>
+    <option value="Scottish">Scottish</option>
+    <option value="Serbian">Serbian</option>
+    <option value="Serbo-Croatian">Serbo-Croatian</option>
+    <option value="Slovenian">Slovenian</option>
+    <option value="Somali">Somali</option>
+    <option value="Spanish">Spanish</option>
+    <option value="Sundanese">Sundanese</option>
+    <option value="Swedish">Swedish</option>
+    <option value="Tajik">Tajik</option>
+    <option value="Tamil">Tamil</option>
+    <option value="Telugu">Telugu</option>
+    <option value="Turkish">Turkish</option>
+    <option value="Turkmen">Turkmen</option>
+    <option value="Ukrainian">Ukrainian</option>
+    <option value="Urdu">Urdu</option>
+    <option value="Vietnamese">Vietnamese</option>
+</select><br><br>
+<div  title='Translate' class='Translate' id='1'>
+ Translate</div></div>
+<div title='Summarize' class='col-sm-3 Summarize    tx_css' id='1' > Summarize</div>
+<div  title='Sentiments' class='col-sm-3 Sentiments   tx_css' id='1' > Sentiments</div>
+<div title='Keywords' class='col-sm-3 Keywords   tx_css' id='1' > Keywords</div>
+
+
+
+<br><br><button class='btn3' id="clear_api_key_btn" title='Clear API Key'>Clear Sambanova API Key</button></div>
+<br><br><button class='btn2' id="clear_textbox_btn" title='Clear API Key'>Clear TextBox</button></div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+<div class="col-sm-1">
+
+</div>
+
+</div>
+
+
+
+
+<!-- row ends  -->
+
+
+
+   
+<br><br><br><br><br>
+<script src="script/app_backend_url.js"></script>
+<script src="script/content.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

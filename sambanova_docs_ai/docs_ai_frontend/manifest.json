@@ -1,0 +1,22 @@
+{
+  "name": "Docs AI",
+  "description": "Easily Analyze Your Documents",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["webNavigation"],
+  "action": { "default_popup": "index_chrome_extension.html",
+ "default_icon": {
+
+    "16": "/img/logo.png"
+
+    }
+
+ },
+"background": { "service_worker": "background.js" }
+}
+
+
+
+
+
+
